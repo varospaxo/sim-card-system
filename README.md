@@ -36,3 +36,9 @@ curl -X POST https://digiitplus.pythonanywhere.com/deactivate \
 
 ### Sim Details
 curl -X GET https://digiitplus.pythonanywhere.com/sim-details/1234567890
+
+## To Run the Code Locally
+1. Clone the repository
+2. Change directory to the cloned repository
+3. Run Flask app using - "flask --app flask_app run"
+4. The application will run on port 5000 by default.
