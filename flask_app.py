@@ -20,9 +20,9 @@ class SimCard(db.Model):
     status = db.Column(db.Enum('active', 'inactive'), nullable=False, default='inactive')
     activation_date = db.Column(db.DateTime, nullable=True)  # Corresponding to timestamp, can be NULL
 
-@app.before_first_request
-def create_tables():
-    db.create_all()  # Create database tables
+# @app.before_first_request
+# def create_tables():
+#     db.create_all()  # Create database tables
 
 # Serve the index.html file at the root route
 @app.route('/', methods=['GET'])

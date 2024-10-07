@@ -45,5 +45,6 @@ Open MySQL console and create a database called sim_cards with the schema given 
 ### To Run The App
 1. Clone the repository
 2. Change directory to the cloned repository
-3. Run Flask app using - "flask --app flask_app run"
-4. The application will run on port 5000 by default.
+3. Install requirements using "pip install -r requirements.txt"
+4. Run Flask app using - "flask --app flask_app run"
+5. The application will run on port 5000 by default.
