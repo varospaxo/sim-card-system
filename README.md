@@ -3,12 +3,12 @@
 Hosted at - https://digiitplus.pythonanywhere.com/
 
 ## Stack - 
-Flask
-MySQL
-Postman (for testing API endpoint)
-HTML
-CSS
-JS
+Flask,
+MySQL,
+Postman (for testing API endpoint),
+HTML,
+CSS,
+JS,
 
 ## Functionality of Routes -
 / - to serve the index.html<br>
