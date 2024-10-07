@@ -38,6 +38,11 @@ curl -X POST https://digiitplus.pythonanywhere.com/deactivate \
 curl -X GET https://digiitplus.pythonanywhere.com/sim-details/1234567890
 
 ## To Run the Code Locally
+
+### To Setup the Database
+Open MySQL console and create a database called sim_cards with the schema given in the repository.
+
+### To Run The App
 1. Clone the repository
 2. Change directory to the cloned repository
 3. Run Flask app using - "flask --app flask_app run"
