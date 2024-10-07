@@ -1,0 +1,17 @@
+curl -X POST https://digiitplus.pythonanywhere.com/add-sim \
+-H "Content-Type: application/json" \
+-d '{"sim_number": "1234567890", "phone_number": "5551234567"}'
+
+
+
+curl -X POST https://digiitplus.pythonanywhere.com/activate \
+-H "Content-Type: application/json" \
+-d '{"sim_number": "1234567890"}'
+
+
+curl -X POST https://digiitplus.pythonanywhere.com/deactivate \
+-H "Content-Type: application/json" \
+-d '{"sim_number": "1234567890"}'
+
+
+curl -X GET https://digiitplus.pythonanywhere.com/sim-details/1234567890

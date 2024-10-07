@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM Card Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>SIM Card Management</h2>
+
+    <div>
+        <h3>Add New SIM Card</h3>
+        <input type="text" id="addSimNumber" placeholder="SIM Number" required>
+        <input type="text" id="addPhoneNumber" placeholder="Phone Number" required>
+        <button onclick="addSim()">Add SIM</button>
+    </div>
+
+    <div>
+        <h3>Activate SIM Card</h3>
+        <input type="text" id="activateSimNumber" placeholder="SIM Number" required>
+        <button onclick="activateSim()">Activate SIM</button>
+    </div>
+
+    <div>
+        <h3>Deactivate SIM Card</h3>
+        <input type="text" id="deactivateSimNumber" placeholder="SIM Number" required>
+        <button onclick="deactivateSim()">Deactivate SIM</button>
+    </div>
+
+    <div>
+        <h3>Get SIM Details</h3>
+        <input type="text" id="detailSimNumber" placeholder="SIM Number" required>
+        <button onclick="getSimDetails()">Get Details</button>
+    </div>
+
+    <div id="response" class="response" style="display:none;"></div>
+
+    <script>
+        const apiBaseUrl = "https://digiitplus.pythonanywhere.com";  // Change this to your actual API URL
+
+        async function addSim() {
+            const simNumber = document.getElementById('addSimNumber').value;
+            const phoneNumber = document.getElementById('addPhoneNumber').value;
+            const responseElement = document.getElementById('response');
+
+            try {
+                const response = await fetch(`${apiBaseUrl}/add-sim`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sim_number: simNumber, phone_number: phoneNumber })
+                });
+                const data = await response.json();
+                responseElement.innerText = data.message || data.error;
+                responseElement.style.display = 'block';
+            } catch (error) {
+                responseElement.innerText = "Error: " + error.message;
+                responseElement.style.display = 'block';
+            }
+        }
+
+        async function activateSim() {
+            const simNumber = document.getElementById('activateSimNumber').value;
+            const responseElement = document.getElementById('response');
+
+            try {
+                const response = await fetch(`${apiBaseUrl}/activate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sim_number: simNumber })
+                });
+                const data = await response.json();
+                responseElement.innerText = data.message || data.error;
+                responseElement.style.display = 'block';
+            } catch (error) {
+                responseElement.innerText = "Error: " + error.message;
+                responseElement.style.display = 'block';
+            }
+        }
+
+        async function deactivateSim() {
+            const simNumber = document.getElementById('deactivateSimNumber').value;
+            const responseElement = document.getElementById('response');
+
+            try {
+                const response = await fetch(`${apiBaseUrl}/deactivate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sim_number: simNumber })
+                });
+                const data = await response.json();
+                responseElement.innerText = data.message || data.error;
+                responseElement.style.display = 'block';
+            } catch (error) {
+                responseElement.innerText = "Error: " + error.message;
+                responseElement.style.display = 'block';
+            }
+        }
+
+        async function getSimDetails() {
+            const simNumber = document.getElementById('detailSimNumber').value;
+            const responseElement = document.getElementById('response');
+
+            try {
+                const response = await fetch(`${apiBaseUrl}/sim-details/${simNumber}`);
+                const data = await response.json();
+                responseElement.innerText = JSON.stringify(data, null, 2);
+                responseElement.style.display = 'block';
+            } catch (error) {
+                responseElement.innerText = "Error: " + error.message;
+                responseElement.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
