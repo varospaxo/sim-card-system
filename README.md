@@ -11,12 +11,11 @@ CSS
 JS
 
 ## Functionality of Routes -
-/ - to serve the index.html
-/add-sim - to add sim card details
-/activate - to activate sim card
-/deactivate - to deactivate sim card
+/ - to serve the index.html<br>
+/add-sim - to add sim card details<br>
+/activate - to activate sim card<br>
+/deactivate - to deactivate sim card<br>
 /sim-details/<sim-number> - to see sim card details
-
 
 ## Postman Curls to Test APIs
 
